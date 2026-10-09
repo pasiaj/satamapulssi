@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Satamapulssi — Pasi A Jokinen</title>
+  <meta name="description" content="Oulun satamakäynnit kuukausi kuukaudelta, satamittain ja alustyypeittäin. Digitrafficin avoimeen Portnet-aineistoon perustuva tutkittava näkymä.">
+  <meta name="author" content="Pasi A Jokinen">
+  <link rel="canonical" href="https://pasiaj.com/projektit/satamapulssi/">
+  <meta property="og:site_name" content="Pasi A Jokinen">
+  <meta property="og:title" content="Satamapulssi — Oulun satamakäynnit">
+  <meta property="og:description" content="Tutki Oulun satamakäyntejä kuukausittain, satamittain ja alustyypeittäin vuodesta 2018.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pasiaj.com/projektit/satamapulssi/">
+  <meta name="theme-color" content="#1f2124">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2210%22%20fill%3D%22%231f2124%22%2F%3E%3Cpath%20d%3D%22M9%2040h46l-7%2010H18zM20%2025h24v13H20z%22%20fill%3D%22%23f4efe5%22%2F%3E%3Cpath%20d%3D%22M11%2055q6-4%2013%200t13%200t16%200%22%20fill%3D%22none%22%20stroke%3D%22%23c25935%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="stylesheet" href="satamat.css">
+  <script defer src="satamat.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Siirry sisältöön</a>
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="wordmark" href="https://pasiaj.com/"><span class="wordmark-name">Pasi A Jokinen</span><span class="wordmark-tag">Sovelluksia perheen arkeen</span></a>
+    <nav class="nav" aria-label="Päävalikko"><a href="https://pasiaj.com/">Sovellukset ja kirjoitukset</a><a href="https://pasiaj.com/projektit/" aria-current="page">Projektit</a><a href="https://pasiaj.com/tietoa/">Tietoa</a></nav>
+  </div>
+</header>
+<main id="main" class="project">
+<article>
+  <header class="post-head">
+    <p class="kicker"><a href="https://pasiaj.com/projektit/">Projektit</a> / Avoin data</p>
+    <h1>Satamapulssi</h1>
+    <p class="project-dek">Mitä Oulun satamassa tapahtuu? Tutki alusten toteutuneita saapumisia kuukausi kuukaudelta, kolmessa satamassa ja eri alustyypeillä.</p>
+  </header>
+  <dl class="project-facts">
+    <div><dt>Aineisto</dt><dd><a href="https://www.digitraffic.fi/meriliikenne/">Fintraffic Digitraffic</a>, Portnetin satamakäynnit</dd></div>
+    <div><dt>Ajanjakso</dt><dd>2018–<span id="latest-year">2026</span>. Täydet vertailuvuodet 2019–2025.</dd></div>
+    <div><dt>Satamat</dt><dd>Oritkari, Vihreäsaari ja Nuottasaari</dd></div>
+    <div><dt>Aineistopoiminta</dt><dd id="data-date">Ladataan tietoja…</dd></div>
+  </dl>
+
+  <div class="prose">
+    <p>Oulun satamaan kirjattiin vuonna 2019 <strong>561 satamakäyntiä</strong> ja vuonna 2025 <strong>374</strong>. Käyntien määrä väheni kolmanneksen. Luku ei silti yksin kuvaa rahdin määrää: <a href="https://ouluport.com/oulun-sataman-sahatavaran-vienti-nousi-uuteen-ennatykseen-myos-konttiliikenne-lahes-huippulukemissa/">Oulun Sataman mukaan</a> vuonna 2025 rahtitonnit kasvoivat edellisvuodesta yli 12 prosenttia ja konttimäärä 31 prosenttia, vaikka satamakäyntejä oli hieman vähemmän.</p>
+    <p>Alla voit vaihtaa vuotta, satamaa ja alustyyppiä. Jokainen pylväs ja lämpökartan ruutu on laskettu toteutuneista saapumisista. Vuoden 2018 alku on hajanainen ja kuluva kuukausi on kesken.</p>
+  </div>
+
+  <section class="numbers" aria-label="Keskeiset luvut">
+    <div><span class="number" id="kpi-2019">561</span><span class="number-label">käyntiä vuonna 2019</span></div>
+    <div><span class="number" id="kpi-2025">374</span><span class="number-label">käyntiä vuonna 2025</span></div>
+    <div><span class="number" id="kpi-change">−33 %</span><span class="number-label">muutos 2019–2025</span></div>
+  </section>
+
+  <section class="explorer" aria-labelledby="explore-title">
+    <div class="section-head">
+      <p class="eyebrow">Tutki aineistoa</p>
+      <h2 id="explore-title">Kuukausi kuukaudelta</h2>
+      <p>Valitse satama ja alustyyppi. Jaa kuukauden pylväät satamittain tai alustyypeittäin. Paina pylvästä nähdäksesi sen luvut.</p>
+    </div>
+    <div class="controls">
+      <label>Vuosi<select id="year-select" aria-label="Valitse vuosi"></select></label>
+      <label>Satama<select id="area-select" aria-label="Rajaa satamaan"></select></label>
+      <label>Alustyyppi<select id="type-select" aria-label="Rajaa alustyyppiin"></select></label>
+      <label>Värit näyttävät<select id="group-select" aria-label="Valitse värien ryhmittely"><option value="area">Satamat</option><option value="type">Alustyypit</option></select></label>
+    </div>
+    <figure class="viz">
+      <figcaption><strong id="monthly-caption">Kuukausittaiset satamakäynnit</strong><span id="monthly-subtitle">Ladataan aineistoa…</span></figcaption>
+      <div class="chart-scroll"><div id="monthly-chart" class="monthly-chart" aria-label="Kuukausittaiset satamakäynnit"></div></div>
+      <div id="monthly-legend" class="legend" aria-label="Värien selite"></div>
+      <p id="month-detail" class="chart-detail" aria-live="polite">Valitse kuukausi nähdäksesi erittelyn.</p>
+    </figure>
+  </section>
+
+  <div class="prose"><h2>Koko ajanjakso yhdellä silmäyksellä</h2><p>Väri näyttää kuukausittaisten käyntien määrän. Käytä samoja satama- ja alustyyppirajauksia kuin yllä. Tyhjä ruutu tarkoittaa, ettei kuukausi kuulu vertailukelpoiseen aineistoon tai se on vielä tulevaisuudessa; nolla näytetään numerona.</p></div>
+  <figure class="viz heatmap-figure">
+    <figcaption><strong>Kuukausien lämpökartta</strong><span id="heatmap-subtitle">Ladataan aineistoa…</span></figcaption>
+    <div class="chart-scroll" id="heatmap-wrap"></div>
+    <p class="chart-note">Vuoden 2018 ennen lokakuuta olevat havainnot ovat hajanaisia. Kuluvan kuukauden ruutu on keskeneräinen.</p>
+  </figure>
+
+  <div class="prose">
+    <h2>Mitä luvut kertovat?</h2>
+    <p><strong>Oritkari</strong> on Oulun vilkkain satama ja konttien, kartongin sekä muun metsäteollisuuden pääsatama. <strong>Vihreäsaari</strong> palvelee muun muassa nestemäisiä polttoaineita, sementtiä ja kuivaa irtotavaraa. <strong>Nuottasaari</strong> on metsäteollisuuden raaka-aineiden tuontisatama. Vuonna 2025 sen 24 saapumisesta 23 oli säiliöaluksia. <a href="https://ouluport.com/satamat/">Oulun Sataman satamakuvaukset</a></p>
+    <p>Vuoden 2020 korkea kokonaisluku tarvitsee selityksen: tuolloin aineistossa oli <strong>114 proomun ja 37 hinaajan</strong> käyntiä. Vihreäsaaren 245 käynnistä 101 oli proomuja. Siksi huippu ei sellaisenaan osoita kaupallisen rahdin kasvua.</p>
+    <p>Alusluokka ei ole sama asia kuin lasti. Esimerkiksi <em>Botnia Enabler</em> ja <em>Baltic Enabler</em> on kirjattu roroaluksiksi, mutta varustamon mukaan ne voivat kuljettaa myös kontteja. <em>Furuvik</em> on puolestaan aineistossa kuivalastialus; Finnsementti kuvaa sitä sementtilaivakseen. <a href="https://wallenius-sol.com/en/enabler-magazine/cargo-holds-space-and-flexibility">Wallenius Solin aluskuvaus</a> · <a href="https://finnsementti.fi/palvelu/furuvik-kuljettaa-sementtia-varmasti-ja-vihreasti/">Finnsementin Furuvik-kuvaus</a></p>
+    <h2>Miten luvut lasketaan?</h2>
+    <p>Satamakäynti on yksi Digitrafficin <code>portCallId</code>-tunnus, jonka kohdesatama on FIOUL. Käynti sijoitetaan kuukauteen sen ensimmäisen kelvollisen toteutuneen saapumisajan (<code>ata</code>) mukaan ja siihen satama-alueeseen, jossa tämä saapuminen kirjattiin. Suunnitellut käynnit ilman toteutunutta saapumisaikaa eivät ole mukana. Kuukausi määräytyy Suomen paikallisajan mukaan.</p>
+    <p>API sisältää alustyypin, mutta ei kerro luotettavasti käyntikohtaista lastin lajia tai määrää. Myös proomut, hinaajat ja muu tukiliikenne sisältyvät kokonaislukuun. Vuosi 2018 alkaa aineistossa käytännössä lokakuusta, ja kuluva vuosi on kesken. <a href="data.json" download>Lataa kaavioiden kuukausidata JSON-muodossa</a> tai tutki <a href="https://meri.digitraffic.fi/swagger/">rajapinnan Swagger-kuvausta</a>.</p>
+  </div>
+</article>
+</main>
+<footer class="site-footer"><div class="site-footer-inner"><p>© 2026 Pasi A Jokinen · Oulu</p><p><a href="https://pasiaj.com/projektit/">Projektit</a> · <a href="https://pasiaj.com/tietoa/">Tietoa</a></p></div></footer>
+</body>
+</html>
