@@ -185,7 +185,34 @@
     $('heatmap-subtitle').textContent = selectionText() + ' · tummempi ruutu tarkoittaa enemmän käyntejä · asteikko 0–' + pretty(max);
   }
 
+  function renderAnnual() {
+    const wrap = $('annual-wrap');
+    if (!wrap) return;
+    wrap.replaceChildren();
+    const table = el('table', 'annual-table');
+    table.setAttribute('aria-label', 'Vuosittaiset satamakäynnit satamittain');
+    const caption = el('caption', '', 'Oulun satamakäynnit vuosittain');
+    table.append(caption);
+    const thead = el('thead');
+    const headings = el('tr');
+    ['Vuosi', 'Oritkari', 'Vihreäsaari', 'Nuottasaari', 'Muu', 'Yhteensä'].forEach(label => headings.append(el('th', '', label)));
+    thead.append(headings); table.append(thead);
+    const tbody = el('tbody');
+    const lastYear = Number(partialMonth.slice(0, 4));
+    for (let year = 2018; year <= lastYear; year++) {
+      const counts = AREA_ORDER.map(area => data.months.filter(item => item.month.startsWith(String(year)) && item.area === area).reduce((sum, item) => sum + item.count, 0));
+      const row = el('tr');
+      row.append(el('th', '', year + (year === 2018 ? '†' : year === lastYear ? '*' : '')));
+      counts.forEach(count => row.append(el('td', '', pretty(count))));
+      row.append(el('td', 'annual-total', pretty(counts.reduce((sum, count) => sum + count, 0))));
+      tbody.append(row);
+    }
+    table.append(tbody);
+    wrap.append(table);
+  }
+
   function render() {
+    renderAnnual();
     renderMonthly();
     renderHeatmap();
     if (selectedMonth) showMonth(selectedMonth);
@@ -211,6 +238,7 @@
       $('data-date').textContent = 'Aineistoa ei saatu ladattua';
       $('monthly-chart').textContent = 'Kaaviota ei voitu näyttää. Tarkista, että data.json on samassa hakemistossa.';
       $('heatmap-wrap').textContent = 'Lämpökarttaa ei voitu näyttää.';
+      if ($('annual-wrap')) $('annual-wrap').textContent = 'Vuositietoja ei voitu näyttää.';
       console.error(error);
     }
   }
